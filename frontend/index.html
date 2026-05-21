@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevOps Academy — LMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       AUTH SCREEN
+  ══════════════════════════════════════════ -->
+  <div id="auth-screen">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="auth-logo-icon">🚀</div>
+        <div class="auth-logo-text">DevOps <span>Academy</span></div>
+      </div>
+
+      <img src="./images/docker.png" alt="DevOps Academy Image" class="auth-image" />
+      
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Login</button>
+        <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Register</button>
+      </div>
+
+      <div id="auth-error" class="auth-error" style="display:none;"></div>
+
+      <!-- Login Form -->
+      <div id="login-form">
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input id="login-email" class="form-input" type="email" placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input id="login-password" class="form-input" type="password" placeholder="••••••••" />
+        </div>
+        <button class="btn btn-primary btn-full" onclick="doLogin()">Login</button>
+      </div>
+
+      <!-- Register Form -->
+      <div id="register-form" style="display:none;">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input id="reg-name" class="form-input" type="text" placeholder="Your full name" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input id="reg-email" class="form-input" type="email" placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input id="reg-password" class="form-input" type="password" placeholder="Min 6 characters" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Register as</label>
+          <select id="reg-role" class="form-select">
+            <option value="student">Student</option>
+            <option value="instructor">Instructor</option>
+          </select>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="doRegister()">Create Account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       MAIN APP (hidden until logged in)
+  ══════════════════════════════════════════ -->
+  <div id="app" style="display:none;">
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <div class="sidebar-logo-icon">🚀</div>
+          <div class="sidebar-logo-text">DevOps Academy</div>
+        </div>
+        <div class="sidebar-role" id="sidebar-role-badge">Student</div>
+      </div>
+
+      <div class="sidebar-nav" id="sidebar-nav"></div>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user" onclick="showPage('profile')">
+          <div class="avatar" id="sidebar-avatar">U</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name" id="sidebar-user-name">User</div>
+            <div class="sidebar-user-email" id="sidebar-user-email">user@lms.dev</div>
+          </div>
+        </div>
+        <button class="btn btn-ghost btn-sm btn-full mt-1" onclick="doLogout()">🚪 Logout</button>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="main">
+      <div class="topbar">
+        <div class="topbar-title" id="topbar-title">Dashboard</div>
+        <div class="topbar-actions" id="topbar-actions"></div>
+      </div>
+      <div class="page" id="page-content">
+        <div class="loading">Loading...</div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       MODAL
+  ══════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-overlay" onclick="closeModalOnBg(event)">
+    <div class="modal" id="modal-box"></div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

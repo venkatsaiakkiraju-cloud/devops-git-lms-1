@@ -1,0 +1,26 @@
+# ─────────────────────────────────────────────
+#  .gitignore — files Git should never track
+# ─────────────────────────────────────────────
+
+# Environment variables — NEVER push this
+.env
+
+# Node dependencies — everyone installs their own
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Runtime
+pids/
+*.pid
+
+# Editor folders
+.vscode/
+.idea/
